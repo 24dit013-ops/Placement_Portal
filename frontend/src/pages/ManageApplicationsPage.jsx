@@ -110,14 +110,14 @@ export default function ManageApplicationsPage() {
                     </td>
 
                     <td className="py-4 px-6">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      <span className={`inline-block whitespace-nowrap px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wide ${
                         app.status === 'Selected' || app.status === 'Offer Released'
-                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-200'
+                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800'
                           : app.status === 'Interview Scheduled'
-                          ? 'bg-purple-50 text-purple-600 border border-purple-200'
+                          ? 'bg-purple-50 text-purple-600 border border-purple-200 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800'
                           : app.status === 'Rejected'
-                          ? 'bg-rose-50 text-rose-600 border border-rose-200'
-                          : 'bg-amber-50 text-amber-600 border border-amber-200'
+                          ? 'bg-rose-50 text-rose-600 border border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800'
+                          : 'bg-amber-50 text-amber-600 border border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800'
                       }`}>
                         {app.status}
                       </span>
