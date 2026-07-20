@@ -206,44 +206,54 @@ export default function ManageStudentsPage() {
       )}
 
       {/* Resume Viewer Modal */}
-      {selectedResumeUrl && (
-        <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-3xl w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span className="text-sm font-bold text-slate-900 dark:text-white">Cloud Resume Document Preview</span>
-              <button onClick={() => setSelectedResumeUrl(null)} className="text-slate-400 font-bold text-xs">Close</button>
-            </div>
-            <div className="w-full h-[500px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800">
-              <object
-                data={selectedResumeUrl}
-                type="application/pdf"
-                className="w-full h-full border-0"
-              >
-                <embed
-                  src={selectedResumeUrl}
+      {selectedResumeUrl && (() => {
+        const activeUrl = selectedResumeUrl.includes('w3.org')
+          ? 'https://pdfobject.com/pdf/sample.pdf'
+          : selectedResumeUrl.startsWith('http://localhost:5000')
+          ? selectedResumeUrl.replace('http://localhost:5000', 'https://placement-portal-5dy7.onrender.com')
+          : selectedResumeUrl.startsWith('/uploads')
+          ? `https://placement-portal-5dy7.onrender.com${selectedResumeUrl}`
+          : selectedResumeUrl;
+
+        return (
+          <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-3xl w-full p-6 space-y-4 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <span className="text-sm font-bold text-slate-900 dark:text-white">Cloud Resume Document Preview</span>
+                <button onClick={() => setSelectedResumeUrl(null)} className="text-slate-400 font-bold text-xs">Close</button>
+              </div>
+              <div className="w-full h-[500px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800">
+                <object
+                  data={activeUrl}
                   type="application/pdf"
                   className="w-full h-full border-0"
-                />
-                <iframe
-                  src={selectedResumeUrl}
-                  title="Resume Modal"
-                  className="w-full h-full border-0"
-                />
-              </object>
-            </div>
-            <div className="text-right">
-              <a
-                href={selectedResumeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs font-bold text-brand-500 hover:underline inline-flex items-center gap-1"
-              >
-                Open Document in New Tab
-              </a>
+                >
+                  <embed
+                    src={activeUrl}
+                    type="application/pdf"
+                    className="w-full h-full border-0"
+                  />
+                  <iframe
+                    src={activeUrl}
+                    title="Resume Modal"
+                    className="w-full h-full border-0"
+                  />
+                </object>
+              </div>
+              <div className="text-right">
+                <a
+                  href={activeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-bold text-brand-500 hover:underline inline-flex items-center gap-1"
+                >
+                  Open Document in New Tab
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
     </div>
   );
