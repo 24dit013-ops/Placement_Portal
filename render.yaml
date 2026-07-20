@@ -1,0 +1,27 @@
+services:
+  # Backend API Service on Render
+  - type: web
+    name: placement-portal-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        value: mongodb+srv://Aashwi21:Shreeji2703@cluster0.ej97uap.mongodb.net/placement_portal?retryWrites=true&w=majority
+      - key: JWT_SECRET
+        value: super_secret_placement_portal_jwt_token_key_2026_enterprise
+      - key: JWT_EXPIRE
+        value: 30d
+
+  # Frontend Web Service on Render / Vercel
+  - type: web
+    name: placement-portal-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

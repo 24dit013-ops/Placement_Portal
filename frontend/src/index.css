@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  /* Global Input, Textarea & Select Contrast Fix */
+  input, textarea, select {
+    @apply bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-slate-200 dark:border-slate-700 !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-slate-400 dark:text-slate-500 !important;
+  }
+
+  /* Fix for HTML Select Option Visibility in Light/Dark Modes */
+  select option {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .dark select option {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+  }
+
+  /* Recharts Tooltip Text Color Fix for Dark Backgrounds */
+  .recharts-default-tooltip {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .recharts-tooltip-item,
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-value,
+  .recharts-tooltip-label {
+    color: #ffffff !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-brand-500 transition-colors;
+}
+
+/* Enterprise Glassmorphism Cards */
+.glass-panel {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm rounded-2xl transition-all duration-300;
+}
+
+.glass-panel-hover {
+  @apply hover:border-brand-300 dark:hover:border-brand-600/60 hover:shadow-glass-hover hover:-translate-y-0.5;
+}
+
+/* Linear/Stripe Dashboard Header Badge */
+.badge-sky {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 dark:bg-brand-950/60 dark:text-brand-300 dark:border-brand-800;
+}
+
+.badge-green {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800;
+}
+
+.badge-amber {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800;
+}
+
+.badge-purple {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800;
+}
+
+.badge-rose {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800;
+}
