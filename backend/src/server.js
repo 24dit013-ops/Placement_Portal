@@ -54,7 +54,7 @@ connectDB().then(async () => {
   }
 });
 
-// API Routes
+// API Routes (With & Without /api Prefix for Universal Compatibility)
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/jobs', jobRoutes);
@@ -62,6 +62,14 @@ app.use('/api/applications', applicationRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/notifications', notificationRoutes);
+
+app.use('/auth', authRoutes);
+app.use('/students', studentRoutes);
+app.use('/jobs', jobRoutes);
+app.use('/applications', applicationRoutes);
+app.use('/companies', companyRoutes);
+app.use('/analytics', analyticsRoutes);
+app.use('/notifications', notificationRoutes);
 
 // Base route test
 app.get('/api/health', (req, res) => {

@@ -1,13 +1,17 @@
 import axios from 'axios';
 
 const getBaseURL = () => {
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
+  let url = import.meta.env.VITE_API_URL || '';
+  if (!url && typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
+    url = 'https://placement-portal-5dy7.onrender.com/api';
   }
-  if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
-    return 'https://placement-portal-5dy7.onrender.com/api';
+  if (!url) {
+    url = '/api';
   }
-  return '/api';
+  if (url.startsWith('http') && !url.endsWith('/api') && !url.endsWith('/api/')) {
+    url = `${url.replace(/\/$/, '')}/api`;
+  }
+  return url;
 };
 
 const API = axios.create({
@@ -81,7 +85,7 @@ export const companyAPI = {
   getCompanies: () => API.get('/companies'),
   getCompanyById: (id) => API.get(`/companies/${id}`),
   createCompany: (data) => API.post('/companies', data),
-  updateCompany: (id, data) => API.post('/companies', data),
+  updateCompany: (id, data) => API.put(`/companies/${id}`, data),
   deleteCompany: (id) => API.delete(`/companies/${id}`)
 };
 
