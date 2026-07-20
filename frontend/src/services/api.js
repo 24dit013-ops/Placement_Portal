@@ -4,8 +4,8 @@ const getBaseURL = () => {
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL;
   }
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-    return 'https://placement-portal-v9j9.onrender.com/api';
+  if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
+    return 'https://placement-portal-5dy7.onrender.com/api';
   }
   return '/api';
 };
@@ -81,7 +81,7 @@ export const companyAPI = {
   getCompanies: () => API.get('/companies'),
   getCompanyById: (id) => API.get(`/companies/${id}`),
   createCompany: (data) => API.post('/companies', data),
-  updateCompany: (id, data) => API.put(`/companies/${id}`, data),
+  updateCompany: (id, data) => API.post('/companies', data),
   deleteCompany: (id) => API.delete(`/companies/${id}`)
 };
 
