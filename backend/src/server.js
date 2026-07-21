@@ -95,5 +95,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Placement Portal Enterprise API Server running on port ${PORT}`);
+  console.log(`[Server]: Placement Portal Enterprise API Server running on port ${PORT}`);
 });

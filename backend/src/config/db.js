@@ -16,7 +16,7 @@ export const connectDB = async () => {
   if (uri && !uri.includes('placementportal.mongodb.net')) {
     try {
       const conn = await mongoose.connect(uri, { serverSelectionTimeoutMS: 6000 });
-      console.log(`🚀 [MongoDB Atlas Connected]: ${conn.connection.host} / Database: ${conn.connection.name}`);
+      console.log(`[MongoDB Atlas Connected]: ${conn.connection.host} / Database: ${conn.connection.name}`);
       return;
     } catch (err) {
       console.warn(`[MongoDB Atlas Warning]: SRV Connection failed (${err.message}). Trying Direct Shard Connection...`);
@@ -25,7 +25,7 @@ export const connectDB = async () => {
       try {
         const directAtlasUri = 'mongodb://Aashwi21:Shreeji2703@ac-wh0kgyt-shard-00-00.ej97uap.mongodb.net:27017,ac-wh0kgyt-shard-00-01.ej97uap.mongodb.net:27017,ac-wh0kgyt-shard-00-02.ej97uap.mongodb.net:27017/placement_portal?ssl=true&replicaSet=atlas-12l4mr-shard-0&authSource=admin&appName=Cluster0';
         const conn = await mongoose.connect(directAtlasUri, { serverSelectionTimeoutMS: 6000 });
-        console.log(`🚀 [MongoDB Atlas Connected Direct]: ${conn.connection.host} / Database: ${conn.connection.name}`);
+        console.log(`[MongoDB Atlas Connected Direct]: ${conn.connection.host} / Database: ${conn.connection.name}`);
         return;
       } catch (directErr) {
         console.warn(`[MongoDB Atlas Warning]: Direct connection failed (${directErr.message}). Trying local fallback...`);
