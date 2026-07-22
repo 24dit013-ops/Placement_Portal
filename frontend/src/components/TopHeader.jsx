@@ -68,7 +68,7 @@ export default function TopHeader({ collapsed }) {
             >
               <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
                 <img
-                  src={user?.avatar || '/avatar.jpg'}
+                  src={(!user?.avatar || user.avatar.includes('unsplash.com')) ? '/avatar.jpg' : user.avatar}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
