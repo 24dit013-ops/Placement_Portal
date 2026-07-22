@@ -66,11 +66,13 @@ export default function TopHeader({ collapsed }) {
               onClick={() => setProfileOpen(!profileOpen)}
               className="flex items-center gap-2.5 p-1 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
-              <img
-                src={user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
-                alt={user?.name}
-                className="w-9 h-9 rounded-xl object-cover ring-2 ring-brand-500/30"
-              />
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
+                <img
+                  src={user?.avatar || '/avatar.jpg'}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="hidden lg:flex flex-col text-left">
                 <span className="text-xs font-bold text-slate-900 dark:text-white leading-snug">
                   {user?.name || 'User'}

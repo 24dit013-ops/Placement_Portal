@@ -32,7 +32,7 @@ export const seedDatabase = async () => {
       role: 'Administrator',
       department: 'Director of Training & Placement',
       phone: '+91 98765 43210',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
+      avatar: '/avatar.jpg'
     });
 
     // Create Student User
@@ -55,7 +55,7 @@ export const seedDatabase = async () => {
       resumeSize: '1.45 MB',
       resumeUploadDate: new Date(),
       placementStatus: 'In Process',
-      avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80'
+      avatar: '/avatar.jpg'
     });
 
     // Seed Companies
